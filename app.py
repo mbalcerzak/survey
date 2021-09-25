@@ -45,11 +45,26 @@ for n in [29, 30]:
     )
 
 # trouble walking / lifting
-# for n in range(1,8):
-#     create_radio(
-#         questions[str(n)], 
-#         ['Not at all','Sometimes','Often','Very much']
-#     )
+for n in range(1,8):
+    create_radio(
+        questions[str(n)], 
+        ['Not at all','Sometimes','Often','Very much']
+    )
+
+
+# to remove
+for n in range(31, 48):
+    create_radio(
+    questions[str(n)], 
+    ['Not at all','Sometimes','Often','Very much']
+    )  
+
+
+for n in range(19, 29):
+    create_radio(
+        questions[str(n)], 
+        ['Not at all','Sometimes','Often','Very much']
+    )
 
 # Questions about past week 
 # Questions 8-18, 70
@@ -73,12 +88,11 @@ if stoma == 'Yes':
             ['Not at all','Sometimes','Often','Very much']
         )
 else:
-    pass
-    # for n in range(56, 62):
-    #     create_radio(
-    #         questions[str(n)], 
-    #         ['Not at all','Sometimes','Often','Very much']
-    #     )
+    for n in range(56, 62):
+        create_radio(
+            questions[str(n)], 
+            ['Not at all','Sometimes','Often','Very much']
+        )
 
 st.subheader('In the past 4 weeks ... ')
 
@@ -104,7 +118,6 @@ for n in range(66, 70):
         questions[str(n)], 
         ['Not at all','Sometimes','Often','Very much']
     )
-
 
 if st.button('Sumbit results'):
     st.write('Thank you for completing the survey Sarah :)')

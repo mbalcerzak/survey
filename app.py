@@ -48,7 +48,7 @@ for n in [29, 30]:
 # for n in range(1,8):
 #     create_radio(
 #         questions[str(n)], 
-#         ['Not at all','Sometimes','Often','Very much']
+#         ['Not at all  ','Sometimes  ', 'Often  ','Very much  ']
 #     )
 
 # Questions about past week 
@@ -70,14 +70,14 @@ if stoma == 'Yes':
     for n in range(49, 56):
         create_radio(
             questions[str(n)], 
-            ['Not at all','Sometimes','Often','Very much']
+            ['Not at all  ','Sometimes  ', 'Often  ','Very much  ']
         )
 else:
     pass
     # for n in range(56, 62):
     #     create_radio(
     #         questions[str(n)], 
-    #         ['Not at all','Sometimes','Often','Very much']
+    #         ['Not at all  ','Sometimes  ', 'Often  ','Very much  ']
     #     )
 
 st.subheader('In the past 4 weeks ... ')
@@ -85,24 +85,24 @@ st.subheader('In the past 4 weeks ... ')
 # interest in sex
 create_radio(
         questions["62"], 
-        ['Not at all','Sometimes','Often','Very much']
+        ['Not at all  ','Sometimes  ', 'Often  ','Very much  ']
     )
 
 if gender == 'Female':
     create_radio(
             questions["65"], 
-            ['Not at all','Sometimes','Often','Very much']
+            ['Not at all  ','Sometimes  ', 'Often  ','Very much  ']
         )
 elif gender == 'Male':
     create_radio(
             questions["63"], 
-            ['Not at all','Sometimes','Often','Very much']
+            ['Not at all  ','Sometimes  ', 'Often  ','Very much  ']
         )
 
 for n in range(66, 70):
     create_radio(
         questions[str(n)], 
-        ['Not at all','Sometimes','Often','Very much']
+        ['Not at all  ','Sometimes  ', 'Often  ','Very much  ']
     )
 
 

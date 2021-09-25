@@ -1,31 +1,109 @@
+from typing import List
 import streamlit as st
+import json
+
+
+def create_slider_severity(x: str):
+    """ X = symptom """
+    return st.slider(f'Please rate the severity of {x}', 1, 3, 1)
+
+
+def create_radio(x: str, options: List):
+    st.radio(label = f'{x}', options=options)
+    return st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', 
+            unsafe_allow_html=True) 
+
+
+with open('data/questions.json', 'r') as f:
+    questions = json.load(f)
 
 
 st.header('Hello again :)')
 st.write('Completing the survey usually takes 14 minutes')
 
-st.write(
-    '''Your doctor was worried about your previous answers and we would 
-    like to check up if the answers to a few questions have changed:''')
+# st.write(
+#     '''Your doctor was worried about your previous answers and we would 
+#     like to check up if the answers to a few questions have changed:''')
+# symptom = st.radio(
+#     label=('You mentioned on 25-04-2021 that you experienced severe nausea.' 
+#     'Is that still a symptom you\'re experiencing?'), 
+#     options=['No', 'Yes'],
+#     )
+# if symptom == 'Yes':    
+#     st.slider(f'Please rate the severity of Nausea (1 means "Not at all" and 4 "Very much")', 1, 3, 1)
 
-symptom = st.radio(
-    label=('You mentioned on 25-04-2021 that you experienced severe nausea.' 
-    'Is that still a symptom you\'re experiencing?'), 
-    options=['No', 'Yes'],
+
+st.subheader('Overall wellbeing ')
+# Overall wellbeing 
+# 29, 30
+for n in [29, 30]:
+    create_radio(
+        questions[str(n)], 
+        ['Very Poor :(', 'Poor', 'OK', 'Good', 'Very good', 'Excellent :)']
     )
 
-if symptom == 'Yes':    
-    st.slider(f'Please rate the severity of Nausea (1 means "Not at all" and 4 "Very much")', 1, 3, 1)
+# trouble walking / lifting
+# for n in range(1,8):
+#     create_radio(
+#         questions[str(n)], 
+#         ['Not at all','Sometimes','Often','Very much']
+#     )
 
-st.subheader('Sliders?')
+# Questions about past week 
+# Questions 8-18, 70
+st.subheader('In the past week... ')
 last_week_symptoms = st.multiselect(
-     'In the PAST WEEK have you experienced',
-     ['Nausea', 'Pain', 'Weakness', 'Tiredness', 'Shortness of breath', 'Diarrhea', 'Lack of apetite', 'Troubles concentrating','Loss of hair'])
+     'Have you experienced: ',
+     ['Constipation', 'Diarrhea', 'Lack of apetite', 'Loss of hair',
+      'Nausea', 'Pain', 'Shortness of breath', 'Tangling hads or feet', 
+      'Tiredness', 'Troubles sleeping', 'Weakness'])
 
 for last_week_symptom in last_week_symptoms:
-    st.slider(f'Please rate the severity of {last_week_symptom}', 1, 3, 1)
+    create_slider_severity(last_week_symptom)
 
+# stoma
+stoma = st.radio(questions["48"], ('No', 'Yes'))
 
-st.subheader('Radio buttons?')
-st.radio(label = 'Please rate the severity of your pain last week', options = ['Not at all','Sometimes','Often','Very much'])
-st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+if stoma == 'Yes':
+    for n in range(49, 56):
+        create_radio(
+            questions[str(n)], 
+            ['Not at all','Sometimes','Often','Very much']
+        )
+else:
+    pass
+    # for n in range(56, 62):
+    #     create_radio(
+    #         questions[str(n)], 
+    #         ['Not at all','Sometimes','Often','Very much']
+    #     )
+
+st.subheader('In the past 4 weeks ... ')
+
+# interest in sex
+create_radio(
+        questions["62"], 
+        ['Not at all','Sometimes','Often','Very much']
+    )
+
+gender = create_radio(
+    'Please specify your gender', 
+    ['Female', 'Male', 'Undisclosed']
+    )
+
+if gender == 'Female':
+    create_radio(
+            questions["65"], 
+            ['Not at all','Sometimes','Often','Very much']
+        )
+elif gender == 'Male':
+    create_radio(
+            questions["63"], 
+            ['Not at all','Sometimes','Often','Very much']
+        )
+
+for n in range(66, 70):
+    create_radio(
+        questions[str(n)], 
+        ['Not at all','Sometimes','Often','Very much']
+    )

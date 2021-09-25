@@ -104,3 +104,8 @@ for n in range(66, 70):
         questions[str(n)], 
         ['Not at all','Sometimes','Often','Very much']
     )
+
+
+st.write('')
+if st.button('Sumbit results'):
+     st.write('Thank you for completing the survey :)')

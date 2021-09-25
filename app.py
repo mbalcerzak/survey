@@ -53,11 +53,11 @@ for n in range(1,8):
 
 
 # to remove
-for n in range(19, 48):
-    create_radio(
-    questions[str(n)], 
-    ['Not at all','Sometimes','Often','Very much']
-    )  
+# for n in range(19, 48):
+#     create_radio(
+#     questions[str(n)], 
+#     ['Not at all','Sometimes','Often','Very much']
+#     )  
 ###
 
 # Questions about past week 

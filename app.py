@@ -18,6 +18,8 @@ with open('data/questions.json', 'r') as f:
     questions = json.load(f)
 
 
+gender = 'Male'
+
 st.header('Welcome back Peter :)')
 st.write('Completing the survey usually takes 14 minutes')
 
@@ -84,11 +86,6 @@ st.subheader('In the past 4 weeks ... ')
 create_radio(
         questions["62"], 
         ['Not at all','Sometimes','Often','Very much']
-    )
-
-gender = create_radio(
-    'Please specify your gender', 
-    ['Female', 'Male', 'Undisclosed']
     )
 
 if gender == 'Female':

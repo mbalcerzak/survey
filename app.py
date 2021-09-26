@@ -17,23 +17,10 @@ def create_radio(x: str, options: List):
 with open('data/questions.json', 'r') as f:
     questions = json.load(f)
 
+gender = 'Male'
 
-gender = 'Female'
-
-st.header('Welcome back Sarah :)')
+st.header('Welcome back Peter :)')
 st.write('Completing the survey usually takes 14 minutes')
-
-# st.write(
-#     '''Your doctor was worried about your previous answers and we would 
-#     like to check up if the answers to a few questions have changed:''')
-# symptom = st.radio(
-#     label=('You mentioned on 25-04-2021 that you experienced severe nausea.' 
-#     'Is that still a symptom you\'re experiencing?'), 
-#     options=['No', 'Yes'],
-#     )
-# if symptom == 'Yes':    
-#     st.slider(f'Please rate the severity of Nausea (1 means "Not at all" and 4 "Very much")', 1, 3, 1)
-
 
 st.subheader('Overall wellbeing ')
 # Overall wellbeing 
@@ -51,14 +38,6 @@ for n in range(1,8):
         ['Not at all','Sometimes','Often','Very much']
     )
 
-
-# to remove
-# for n in range(19, 48):
-#     create_radio(
-#     questions[str(n)], 
-#     ['Not at all','Sometimes','Often','Very much']
-#     )  
-###
 
 # Questions about past week 
 # Questions 8-18, 70
